@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+<nav >
+    <h1>SportyShoes</h1>
+        <table style="Color:red;position: absolute;top: 8px;right: 16px;font-size: 14px;top:3%;">
+            <td> <a th:href="@{/admin}" href="#">Admin-home</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a  th:href="@{/logout}" href="#">Logout</a></td>
+        </table>
+</nav>
+<div >
+    <div >
+        <div >
+
+            <div >
+                <div >
+                    <h2 style="margin-left: 5%; margin-top: 3%;">Purchase Report</h2>
+                </div>
+
+                <table id="purchaseReport"   style="color:black;text-align: center; border: 5px outset; background-color: white;margin-left: 5%;margin-right: 5%; width: 1200px;margin-top: 3%;">
+                    <thead>
+                    <tr>
+                        <th scope="col">SN</th>
+            			<th scope="col">User Email</th>
+            			<th scope="col">User Name</th>
+            			<th scope="col">Product Id</th>
+            			<th scope="col">Category</th>
+            			<th scope="col">Product Name</th>
+            			<th scope="col">Product Price</th>
+            			<th scope="col">Order Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="purchase, iStat : ${puchaseList}">
+                    	<th scope="row" th:text="${iStat.index + 1}">1</th>
+						<td th:text="${purchase.email}">Larry</td>
+						<td th:text="${purchase.name}">Larry</td>
+						<td th:text="${purchase.productId}">Larry</td>
+						<td th:text="${purchase.category}">Larry</td>
+						<td th:text="${purchase.productName}">Larry</td>
+						<td th:text="${purchase.price}">Larry</td>
+						<td th:text="${purchase.date}">Larry</td>
+						
+						
+                    </tr>
+                    </tbody>
+                </table>         
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function () {
+    $('#purchaseReport').dataTable({
+        "lengthMenu": [5, 7, 10, 12, 15, 20],
+        "ordering": false
+    });
+    $('.dataTables_length').addClass('bs-select');
+
+});
+</script>
+</body>
+</html>

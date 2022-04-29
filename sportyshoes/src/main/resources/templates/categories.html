@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+<nav  >
+    <div>
+        <h1>SportyShoes</h1>
+
+        </div>
+        <table style="Color:red;position: absolute;top: 8px;right: 16px;font-size: 14px;top:3%;">
+            <td> <a th:href="@{/admin}" href="#">Admin-home</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a  th:href="@{/logout}" href="#">Logout</a></td>
+        </table>
+    </div>
+</nav>
+<div>
+
+    <button><a th:href="@{/admin/categories/add}" >Add Category</a></button>
+    <table   style="color:black;text-align: center; border: 5px outset; background-color: lightgrey;margin-left: 5%;margin-right: 5%; width: 1200px;margin-top: 7%;">
+        <thead >
+        <tr>
+            <th scope="col">SN</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="category, iStat : ${categories}">
+            <th scope="row" th:text="${iStat.index + 1}">1</th>
+            <td th:text="${category.name}">Larry</td>
+
+            <td><a href="" th:href="@{/admin/categories/delete/{id}(id=${category.id})}" >Delete</a></td>
+            <td><a href="" th:href="@{/admin/categories/update/{id}(id=${category.id})}" >Update</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

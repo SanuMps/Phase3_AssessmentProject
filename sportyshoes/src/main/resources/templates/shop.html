@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+
+
+<nav >
+    <h1>SportyShoes</h1>
+
+        <table style="Color:red;position: absolute;top: 8px;right: 16px;font-size: 14px;top:3%;">
+            <td> <a th:href="@{/}" href="#">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/shop}" href="#">Shop</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a  sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/cart}" href="#">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <span th:text="${cartCount}">0</span></td>
+        </table>
+</nav>
+<div style="margin-top: 30px">
+    <div >
+        <div   style="margin-left: 20%;margin-top: 5%;">
+            <h2>Categories</h2>
+            <ul>
+                <a th:href="@{/shop}"><li >All Products</li></a>
+                <a href="" th:each="category, iStat : ${categories}"
+                   th:href="@{/shop/category/{id}(id=${category.id})}"><li
+                                 th:text="${category.name}"></li></a>
+
+            </ul>
+        </div>
+        <div  style="margin-left: 40%;margin-top: -5%;">
+            <div style="margin-top: 20px" th:each="product : ${products}">
+                <div  >
+                    <div >
+                        <img height="150px" width="150px" th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}">
+                    </div>
+                    <div >
+                        <div  style="margin-left: 30%;margin-top: -14%;" >
+                            <h5  th:text="${product.name}"></h5>
+                            <h4>₹ <span th:text="${product.price}"></span></h4>
+                            <p th:text="${product.description}" >Suresh Dasari is a founder and technical lead developer in tutlane.</p>
+                            <button><a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}">View Product</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

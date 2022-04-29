@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Sporty Shoes</title>
+</head>
+<body>
+
+
+<nav   >
+    <div >
+        <h1>SportyShoes</h1>
+
+        <table style="Color:red;position: absolute;top: 8px;right: 16px;font-size: 14px;top:3%;">
+            <td> <a th:href="@{/}" href="#">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/shop}" href="#">Shop</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a  sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/cart}" href="#">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <span th:text="${cartCount}">0</span></td>
+        </table>
+    </div>
+</nav>
+<main>
+    <div >
+        <section   >
+            <div >
+                <div>
+                    <div>
+                        <div >
+
+                            <h3  style="position: relative;left: 200px ;" >Cart (<span th:text="${cartCount}">2</span> items)</h3>
+
+                            <div th:each="item, iStat : ${cart}">
+                                <div >
+                                    <div >
+                                        <img   style="position:absolute; left: 10%;" width="180" height="200"
+                                             th:src="@{${'/productImages/' + item.imageName}}"
+                                             src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
+
+                                    </div>
+                                </div>
+                                <div  style="position:absolute; left: 30%;">
+                                    <div>
+                                        <div  >
+                                            <div>
+                                                <h5 th:text="${item.name}">Blue denim shirt</h5>
+                                                <p  >Weight: <span th:text="${item.weight}"></span> grams</p>
+<!--                                                <p   "mb-2 text-uppercase small">Category: <span th:text="${item.category.name}"></span></p>-->
+
+                                            </div>
+
+                                        </div>
+                                        <div   style="position:absolute;left: 30%;">
+                                            <div>
+                                                <button><a href="#!" th:href="@{/cart/removeItem/{index}(index=${iStat.index})}">Remove item</a></button>
+
+                                            </div>
+                                            <p  ><span><strong>₹<span th:text="${item.price}"></span></strong></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                               
+                            <p   style="position: absolute;top: 80%;right: 40%;"></i> Do not delay the purchase, adding
+                                items to your cart does not mean booking them.</p>
+                                 
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div   style="position: absolute;top: 10%;left: 1000px;font-size: medium;">
+                    <div   >
+                        <div >
+
+                            <h2 >The total amount </h2>
+
+                            <ul  >
+                                <li >
+                                    Amount Payable <br><br>
+                                    <span>₹<span th:text="${total}"></span></span>
+                                </li>
+                                <br>
+                                <li >
+                                    Shipping
+                                    <span>Gratis</span>
+                                </li>
+                                <br>
+
+                                <li >
+                                    <div>
+                                        <strong>The total amount of</strong>
+                                        <strong>
+                                            <p>(including VAT)</p>
+                                        </strong>
+                                    </div>
+                                    <span><strong>₹<span th:text="${total}"></span></strong></span>
+                                </li>
+                            </ul>
+
+                            <button><a th:href="@{/checkout}">Go to
+                                checkout</a></button>
+
+                        </div>
+                    </div>
+       
+                    <br>
+                    <div >
+                        <div >
+
+                            <a data-toggle="collapse" href="#collapseExample"
+                               aria-expanded="false" aria-controls="collapseExample">
+                                Add a discount code (optional)
+                                <span><i ></i></span>
+                            </a>
+                            
+                            <div >
+                                <div >
+                                    <br>
+                                    <div  >
+                                        <input type="text" id="discount-code" 
+                                               placeholder="Enter discount code">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                
+            </div>
+
+
+        </section>
+
+
+    </div>
+    
+</main>
+</body>
+</html>

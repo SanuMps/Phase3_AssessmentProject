@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+<nav  >
+    <div >
+        <h1>SportyShoes</h1>
+
+        <table style="Color:red;position: absolute;top: 8px;right: 16px;font-size: 14px;top:3%;">
+            <td> <a th:href="@{/}" href="#">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/shop}" href="#">Shop</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a  sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/cart}" href="#">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <span th:text="${cartCount}">0</span></td>
+        </table>
+    </div>
+</nav>
+<div >
+
+    <section >
+        <div >
+            <div   style="position: absolute;left: 300px;top: 10% ;">
+
+                <div  >
+                    <div  >
+
+                        <h3 >Billing details</h3>
+
+                        <div  >
+                            <div >
+
+                                <!-- First name -->
+                                <div >
+                                    <label for="firstName">First name</label>
+                                    <input type="text" id="firstName" required  >
+                                </div>
+
+                            </div>
+                            <!-- Grid column -->
+                            <br>
+                            <!-- Grid column -->
+                            <div  >
+
+                                <!-- Last name -->
+                                <div >
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" id="lastName" required  >
+                                </div>
+
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row -->
+
+
+                        <br>
+                        <!-- Country -->
+                        <div >
+                            <div >
+                                <label>Country - <strong>INDIA</strong></label>
+
+
+                            </div>
+                        </div>
+                        <br>
+                        <!-- Address Part 1 -->
+                        <div >
+                            <label for="form14">Address (Line 1)</label>
+                            <input type="text" required id="form14" placeholder="House number and street name"  >
+                        </div>
+                        <br>
+                        <!-- Address Part 2 -->
+                        <div >
+                            <label for="form15">Address (Line 2)</label>
+                            <input type="text" id="form15" placeholder="Apartment, suite, unit etc. (optional)"
+                                     >
+                        </div>
+                        <br>
+                        <!-- Postcode / ZIP -->
+                        <div   >
+                            <label for="form16">Postcode / ZIP</label>
+                            <input type="text" maxlength="6" minlength="6" required id="form16"  >
+                        </div>
+                        <br>
+                        <!-- Town / City -->
+                        <div   >
+                            <label for="form17">Town / City</label>
+                            <input type="text" required id="form17" >
+
+                        </div>
+                        <br>
+                        <!-- Phone -->
+                        <div >
+                            <label for="form18">Phone</label>
+                            <input type="number" minlength="10" maxlength="10" required id="form18"  >
+                        </div>
+                        <br>
+                        <!-- Email address -->
+                        <div  >
+                            <label for="form19">Email address</label>
+                            <input type="email" required id="form19" >
+                        </div>
+                        <br>
+                        <!-- Additional information -->
+                        <div >
+                            <label for="form76">Additional information</label>
+                            <br>
+                            <textarea id="form76"  rows="4"></textarea>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <!-- Card -->
+
+            </div>
+
+
+            <div   style="position: absolute;left: 800px;top: 10%;">
+
+                <div >
+                    <div >
+
+                        <h3 >The total amount </h3>
+
+                        <ul  >
+                            <li  >
+                                Amount Payable
+                                <span>₹<span th:text="${total}"></span></span>
+                            </li>
+                            <br>
+                            <li >
+                                Shipping
+                                <span>Gratis</span>
+                            </li>
+                            <br>
+                            <li >
+                                <div>
+                                    <strong>The total amount of</strong>
+                                    <strong>
+                                        <p  >(including VAT)</p>
+                                    </strong>
+                                </div>
+                                <span><strong>₹<span th:text="${total}"></span></strong></span>
+                            </li>
+                        </ul>
+
+                        <form action="" method="post" th:action="@{/payNow}" >
+                            <button type="submit" >Pay Now</button>
+                        </form>
+
+                    </div>
+                </div>
+
+                <br>
+
+                <div >
+                    <div  >
+
+                        <a data-toggle="collapse" href="#collapseExample"
+                           aria-expanded="false" aria-controls="collapseExample">
+                            Add a discount code (optional)
+                            <span><i ></i></span>
+                        </a>
+
+                        <div id="collapseExample">
+                            <div  >
+                                <div  >
+                                    <br>
+                                    <input type="text" id="discount-code" 
+                                           placeholder="Enter discount code">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</div>
+</body>
+</html>

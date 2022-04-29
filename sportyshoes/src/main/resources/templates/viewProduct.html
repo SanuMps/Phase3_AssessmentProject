@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+
+
+<nav>
+    <h1>SportyShoes</h1>
+
+        <table style="Color:red;position: absolute;top: 8px;right: 16px;font-size: 14px;top:3%;">
+            <td> <a th:href="@{/}" href="#">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/shop}" href="#">Shop</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a  sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/cart}" href="#">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </table>
+</nav>
+<div >
+    <div  >
+        <div   style="margin-left: 20%;margin-top: 5%;">
+            <img  height="300px" width="300px" src="" th:src="@{${'/productImages/' + product.imageName}}"
+                 alt="">
+        </div>
+        <div  style="margin-left: 48%;margin-top: -20%;font-size: large;">
+            <h2 th:text="${product.name}"></h2>
+            <p th:text="${product.category.name}"></p>
+            <h2>₹ <span th:text="${product.price}"></span></h2>
+            <h5>Weight:
+                <spna th:text="${product.weight}"></spna> grams
+            </h5>
+            <p th:text="${product.description}"></p>
+            <button><a href="" th:href="@{/addToCart/{id}(id = ${product.id})}">Add to cart</a></button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

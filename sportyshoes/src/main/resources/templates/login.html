@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+
+
+<nav    >
+    <div >
+        <h1>SportyShoes</h1>
+        <table style="Color:red;position: absolute;top: 8px;right: 16px;font-size: 14px;top:3%;">
+            <td> <a th:href="@{/}" href="#">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/shop}" href="#">Shop</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a href="#">Sign Up</a></td>
+        </table>
+    </div>
+</nav>
+<div  >
+    <div >
+        <div >
+            <h2 style="text-align: center;margin-top: 3%;">Login</h2>
+            <h3 style="text-align: center;padding: 10px;">Please fill out this to login!!!</h3>
+            <form th:action="@{/login}" method="post">
+                <table border="5" style="text-align:center; margin-left:auto;margin-right:auto;" > 
+                    <tr><td><br/>&nbsp;&nbsp;Please Enter Your Username: <input type="text" name="email" placeholder="Username">&nbsp;&nbsp;<br/><br/>
+                    &nbsp;&nbsp;Please Enter Your Password: <input type="password" name="password" placeholder="Password">&nbsp;&nbsp;<br/><br/></td></tr>
+                    <tr><td><input type="submit" value="Login"></td></tr>
+                    <br>
+                    
+                    <tr><td><span >Don't have an account <a href="./register.html"
+                        th:href="@{/register}">Register here</a></span></td></tr>
+                    </table>
+                    <div th:if="${param.error}"   style="text-align: center;padding: 20px;color: red;">
+                        Invalid username or password.
+                    </div>
+
+            </form>
+            <div style="text-align: center;padding: 100px; color: olive;">
+                <p> Admin Login:
+                    <br>
+                    Username: sanu@gmail.com
+                    <br>    
+                    Password: 1234</p>
+                <p>User Login:
+                    User can register from the given link.
+                </p> 
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+
+
+<nav  >
+    <div>
+        <h1>SportyShoes</h1>
+
+        <table style="Color:red;position: absolute;top: 8px;right: 16px;font-size: 14px;top:3%;">
+            <td> <a th:href="@{/}" href="#">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/shop}" href="#">Shop</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a  sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a th:href="@{/cart}" href="#">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </table>
+    </div>
+</nav>
+<div >
+    <div >
+        <div >
+            <div >
+                <div >
+                    <strong th:text="${result}"></strong>
+                    <br>
+                </div>
+                <div  >
+                    <p style="position: relative;left: 25%;">
+                    	<em>Receipt #: </em>
+                        <em th:text="${Reciept}">Receipt #: 34522677W</em>
+                    </p>
+                </div>
+            </div>
+            <div >
+                <div >
+                    <h1 style="position: relative;left: 5%; font-family: Arial, Helvetica, sans-serif;">Receipt</h1>
+                </div>
+
+                <table   style="color:black;text-align: center; border: 5px outset; background-color: white;margin-left: 5%;margin-right: 50%; width: 800px;margin-top: 2%;">
+                    <thead>
+                    <tr>
+                        <th scope="col">SN</th>
+            			<th scope="col">Product</th>
+            			<th scope="col">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="item, iStat : ${products}">
+                    	<th scope="row" th:text="${iStat.index + 1}">1</th>
+						<td th:text="${item.name}">Larry</td>
+						<td th:text="${item.price}">Larry</td>
+                     
+                    </tr>
+                    </tbody>
+                </table>
+                
+                <div  style="margin: auto;">
+                    <span><h3 style="position: relative;left: 5%;">Total Amount Paid: </h3></span>
+                    <span style="position: relative;left: 17%; top: -40.5px"><h3 th:text="${total}"></h3></span>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

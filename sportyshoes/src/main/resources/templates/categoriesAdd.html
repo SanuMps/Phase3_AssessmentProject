@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+<nav  >
+    <div >
+        <h1>SportyShoes</h1>
+
+        </div>
+        <table style="Color:red;position: absolute;top: 8px;right: 16px;font-size: 14px;top:3%;">
+            <td> <a th:href="@{/admin}" href="#">Admin-home</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <a  th:href="@{/logout}" href="#">Logout</a></td>
+        </table>
+    </div>
+</nav>
+<div >
+    <div >
+        <div   style="margin-top: 5%;border:thin">
+            <h3 style="text-align:center;">Add Categories</h3>
+            <form th:action="@{/admin/categories/add}" method="post" th:object="${category}">
+                <!-- <table >
+                <input type="hidden" name="id"  th:field="*{id}">
+                <div   "form-group">
+                    <label for="name">Name</label>
+                    <br>
+                    <br>
+                    <input type="text"   "form-control" required th:field="*{name}" name="name" id="name"  placeholder="Enter name">
+
+                </div>
+                <br>
+                <button style="background-color: blue;color: white;font-size: large;position: absolute ;left: center;" type="submit" >Submit</button>
+            </table> -->
+            <table border="5" style="text-align:center; margin-left:auto;margin-right:auto;margin-top: 2%;" > 
+                <input type="hidden" name="id"  th:field="*{id}">
+                <tr><td><br/>&nbsp;&nbsp;Name: <input type="text"   "form-control" required th:field="*{name}" name="name" id="name"  placeholder="Enter name">&nbsp;&nbsp;<br/><br/>
+                <tr><td><input type="submit"></td></tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
